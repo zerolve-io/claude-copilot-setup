@@ -6,17 +6,15 @@ echo "  Claude Code with GitHub Copilot - DevContainer"
 echo "════════════════════════════════════════════════════════════════"
 echo ""
 
-# Add shell functions to bashrc if not already present
-if ! grep -q "# Claude Code with GitHub Copilot" ~/.bashrc 2>/dev/null; then
-    cat >> ~/.bashrc << 'EOF'
-
+# Function definition
+CLAUDE_FUNCTIONS='
 # Claude Code with GitHub Copilot
 claudecopilot() {
     # Check if copilot-api is already running
     if pgrep -f "copilot-api start" > /dev/null; then
         echo "✓ Copilot API proxy already running"
         
-        # Test if it's responding
+        # Test if it'\''s responding
         if curl -s http://localhost:4141/v1/models > /dev/null 2>&1; then
             echo "✓ Proxy is authenticated and ready"
         else
@@ -68,17 +66,26 @@ claudecopilot() {
 }
 
 # Alias to stop the copilot-api proxy
-alias stopcopilot='pkill -f "copilot-api start" && echo "✓ Stopped Copilot API proxy"'
-EOF
+alias stopcopilot='\''pkill -f "copilot-api start" && echo "✓ Stopped Copilot API proxy"'\''
+'
+
+# Add to bashrc if not already present
+if ! grep -q "# Claude Code with GitHub Copilot" ~/.bashrc 2>/dev/null; then
+    echo "$CLAUDE_FUNCTIONS" >> ~/.bashrc
 fi
+
+# Also add to bash_profile for immediate loading
+if ! grep -q "# Claude Code with GitHub Copilot" ~/.bash_profile 2>/dev/null; then
+    echo "$CLAUDE_FUNCTIONS" >> ~/.bash_profile
+fi
+
+# Source it for the current session
+eval "$CLAUDE_FUNCTIONS"
 
 echo "✓ DevContainer ready!"
 echo ""
-echo "Commands available:"
+echo "Commands available (loaded and ready to use):"
 echo "  claudecopilot - Start Claude Code with GitHub Copilot"
 echo "  stopcopilot   - Stop the Copilot API proxy"
-echo ""
-echo "⚠ Note: Run 'source ~/.bashrc' to load the commands in this shell"
-echo "   (New terminals will have them automatically)"
 echo ""
 echo "════════════════════════════════════════════════════════════════"
