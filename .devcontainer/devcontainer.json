@@ -1,0 +1,47 @@
+{
+  "name": "Claude Code with GitHub Copilot",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+  
+  "postCreateCommand": "npm install -g copilot-api @anthropic-ai/claude-code && mkdir -p ~/.claude && cp /workspace/.devcontainer/claude-settings.json ~/.claude/settings.json",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  
+  "forwardPorts": [4141],
+  "portsAttributes": {
+    "4141": {
+      "label": "Copilot API Proxy",
+      "onAutoForward": "silent"
+    }
+  },
+  
+  "mounts": [
+    "source=${localEnv:HOME}/.config/github-copilot,target=/home/vscode/.config/github-copilot,type=bind,consistency=cached"
+  ],
+  
+  "remoteEnv": {
+    "ANTHROPIC_BASE_URL": "http://localhost:4141",
+    "ANTHROPIC_AUTH_TOKEN": "sk-dummy",
+    "ANTHROPIC_MODEL": "claude-sonnet-4.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-5-mini",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  
+  "postStartCommand": "bash /workspace/.devcontainer/startup.sh"
+}

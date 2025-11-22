@@ -2,10 +2,24 @@
 
 Use Claude Code with your GitHub Copilot subscription instead of paying for separate Anthropic API access.
 
+## Quick Start Options
+
+### 🐳 DevContainer (Recommended)
+
+**Zero setup required!** Use the pre-configured Ubuntu devcontainer:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/zerolve-io/claude-copilot-setup)
+
+Or open in VS Code locally with Dev Containers extension. See [.devcontainer/README.md](.devcontainer/README.md) for details.
+
+### 💻 Local Installation
+
+Install directly on your machine (macOS, Linux, or Windows with WSL).
+
 ## Prerequisites
 
 - Active GitHub Copilot subscription
-- Node.js and npm installed
+- Node.js and npm installed (or use DevContainer)
 - macOS, Linux, or Windows with WSL
 
 ## Installation
