@@ -1,0 +1,66 @@
+{
+  "name": "Full Development Workspace",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "mounts": [
+    "source=${localEnv:HOME}/projects,target=/workspace/projects,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/workspaces,target=/workspace/workspaces,type=bind,consistency=cached",
+    "source=claude-history,target=/home/vscode/.local/state,type=volume",
+    "source=claude-cache,target=/home/vscode/.cache,type=volume",
+    "source=copilot-auth,target=/home/vscode/.config/github-copilot,type=volume"
+  ],
+  
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/zerolve-io/devcontainer-features/claude-copilot:1": {
+      "model": "claude-sonnet-4.5",
+      "haikuModel": "gpt-5-mini"
+    }
+  },
+  
+  "forwardPorts": [4141],
+  
+  "portsAttributes": {
+    "4141": {
+      "label": "Copilot API Proxy",
+      "onAutoForward": "silent"
+    }
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-python.python",
+        "golang.go",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "files.watcherExclude": {
+          "**/node_modules/**": true,
+          "**/.venv/**": true
+        }
+      }
+    }
+  },
+  
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/workspace/bin"
+  }
+}

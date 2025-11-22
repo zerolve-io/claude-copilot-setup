@@ -1,0 +1,58 @@
+{
+  "name": "Team Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace/current-project,type=bind",
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,readonly",
+    "source=team-copilot-auth,target=/home/vscode/.config/github-copilot,type=volume"
+  ],
+  
+  "workspaceFolder": "/workspace/current-project",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/zerolve-io/devcontainer-features/claude-copilot:1": {
+      "model": "claude-sonnet-4.5",
+      "haikuModel": "gpt-5-mini"
+    }
+  },
+  
+  "forwardPorts": [4141, 3000],
+  
+  "portsAttributes": {
+    "4141": {
+      "label": "Copilot API Proxy",
+      "onAutoForward": "silent"
+    },
+    "3000": {
+      "label": "Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "eslint.validate": ["javascript", "typescript"]
+      }
+    }
+  },
+  
+  "postCreateCommand": "npm install",
+  
+  "remoteUser": "vscode"
+}

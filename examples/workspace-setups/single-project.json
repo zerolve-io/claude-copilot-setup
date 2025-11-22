@@ -1,0 +1,31 @@
+{
+  "name": "Single Project with Claude Copilot",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/project,type=bind",
+  "workspaceFolder": "/workspace/project",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/zerolve-io/devcontainer-features/claude-copilot:1": {
+      "model": "claude-sonnet-4.5",
+      "haikuModel": "gpt-5-mini"
+    }
+  },
+  
+  "forwardPorts": [4141],
+  
+  "portsAttributes": {
+    "4141": {
+      "label": "Copilot API Proxy",
+      "onAutoForward": "silent"
+    }
+  },
+  
+  "remoteEnv": {
+    "ANTHROPIC_BASE_URL": "http://localhost:4141",
+    "ANTHROPIC_AUTH_TOKEN": "sk-dummy"
+  }
+}

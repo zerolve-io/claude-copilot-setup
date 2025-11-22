@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "name": "Frontend",
+      "path": "/workspace/frontend"
+    },
+    {
+      "name": "Backend API",
+      "path": "/workspace/backend"
+    },
+    {
+      "name": "Shared Libraries",
+      "path": "/workspace/shared"
+    },
+    {
+      "name": "Documentation",
+      "path": "/workspace/docs"
+    }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.git/**": true,
+      "**/__pycache__/**": true,
+      "**/.venv/**": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/.venv": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-python.python",
+      "GitHub.copilot",
+      "GitHub.copilot-chat"
+    ]
+  }
+}

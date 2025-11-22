@@ -1,0 +1,47 @@
+{
+  "name": "Multi-Project Workspace with Claude Copilot",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  
+  "mounts": [
+    "source=${localEnv:HOME}/projects/frontend,target=/workspace/frontend,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/projects/backend,target=/workspace/backend,type=bind,consistency=cached",
+    "source=${localEnv:HOME}/projects/shared,target=/workspace/shared,type=bind,consistency=cached"
+  ],
+  
+  "workspaceFolder": "/workspace",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/zerolve-io/devcontainer-features/claude-copilot:1": {}
+  },
+  
+  "forwardPorts": [4141, 3000, 8000],
+  
+  "portsAttributes": {
+    "4141": {
+      "label": "Copilot API Proxy",
+      "onAutoForward": "silent"
+    },
+    "3000": {
+      "label": "Frontend Dev Server"
+    },
+    "8000": {
+      "label": "Backend API"
+    }
+  },
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "ms-python.python",
+        "GitHub.copilot"
+      ]
+    }
+  }
+}

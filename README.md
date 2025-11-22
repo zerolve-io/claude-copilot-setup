@@ -173,6 +173,31 @@ When you're done for the day:
 stopcopilot
 ```
 
+## Advanced Usage
+
+### Workspace Management
+
+Configure the devcontainer to work with your project structure:
+
+```bash
+# Interactive workspace setup
+./setup-workspace.sh
+```
+
+**Workspace Patterns:**
+- **Single Project** - Focus on one project at a time
+- **Multi-Project** - Work with multiple related projects
+- **Full Workspace** - Mount entire projects directory
+- **Team Setup** - Standardized team configuration
+
+**Features:**
+- Mount local projects into container
+- Work with multiple projects simultaneously
+- Persist authentication and cache
+- Custom directory structures
+
+See [examples/workspace-setups/README.md](examples/workspace-setups/README.md) for detailed configurations.
+
 ### Project-Specific Settings
 
 Customize Claude Code settings per-project:
