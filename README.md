@@ -2,6 +2,37 @@
 
 Use Claude Code with your GitHub Copilot subscription instead of paying for separate Anthropic API access.
 
+## 🚀 Quick Start: New Project
+
+The fastest way to start a new project with Claude Code:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/zerolve-io/claude-copilot-setup/main/create-project.sh | bash
+```
+
+Or clone and run locally:
+
+```bash
+git clone https://github.com/zerolve-io/claude-copilot-setup.git
+cd claude-copilot-setup
+./create-project.sh
+```
+
+**What it does:**
+- ✅ Creates a new project with devcontainer
+- ✅ Configures Claude Code + GitHub Copilot
+- ✅ Sets up git repository
+- ✅ Generates README and .gitignore
+- ✅ Ready to open in VS Code or Codespaces
+
+**Supported project types:**
+- Python, Node.js, Go, Rust
+- Full Stack (Node + Python)
+- Data Science (Python + Jupyter + ML)
+- Custom (your own base image)
+
+---
+
 ## Quick Start Options
 
 ### 🐳 DevContainer (Recommended)
