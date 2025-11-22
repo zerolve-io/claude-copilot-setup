@@ -173,6 +173,29 @@ When you're done for the day:
 stopcopilot
 ```
 
+### Project-Specific Settings
+
+Customize Claude Code settings per-project:
+
+```bash
+# Interactive setup
+./setup-project.sh
+
+# Or manually create .claude/settings.json
+mkdir -p .claude
+cp examples/project-settings/python-ml.json .claude/settings.json
+```
+
+**Available templates:**
+- `python-ml.json` - Machine learning projects (deep reasoning)
+- `frontend.json` - Web frontends (fast iterations)
+- `backend-api.json` - API development (complex logic)
+- `documentation.json` - Documentation (quality writing)
+- `legacy-refactor.json` - Legacy code (thorough analysis)
+- `large-codebase.json` - Large projects (long context)
+
+See [examples/project-settings/README.md](examples/project-settings/README.md) for details.
+
 ## How It Works
 
 1. **copilot-api** - Provides a proxy that translates Anthropic API calls to GitHub Copilot API calls

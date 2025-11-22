@@ -1,0 +1,8 @@
+{
+  "env": {
+    "ANTHROPIC_MODEL": "claude-sonnet-4.5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-4o",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "0",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "0"
+  }
+}
