@@ -6,11 +6,27 @@ Use Claude Code with your GitHub Copilot subscription instead of paying for sepa
 
 ### 🐳 DevContainer (Recommended)
 
-**Zero setup required!** Use the pre-configured Ubuntu devcontainer:
+**Option A: Standalone Container**
+
+Zero setup required! Use the pre-configured Ubuntu devcontainer:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/zerolve-io/claude-copilot-setup)
 
 Or open in VS Code locally with Dev Containers extension. See [.devcontainer/README.md](.devcontainer/README.md) for details.
+
+**Option B: Add to Your Existing Project**
+
+Add this feature to your existing devcontainer:
+
+```json
+{
+  "features": {
+    "ghcr.io/zerolve-io/devcontainer-features/claude-copilot:1": {}
+  }
+}
+```
+
+See [devcontainer-features](https://github.com/zerolve-io/devcontainer-features) repository for details.
 
 ### 💻 Local Installation
 
